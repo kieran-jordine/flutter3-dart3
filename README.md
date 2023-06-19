@@ -4,13 +4,30 @@ Flutter and Dart 3, clean architecture
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+flutter pub add <package>
+dart run build_runner build (flutter pub run build_runner build)
 
-A few resources to get you started if this is your first Flutter project:
+Clean Architecture
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+config
+    theme
+    routes
+core
+    util
+    error
+    network
+    use_cases
+features
+    <feature-name>
+        presentation
+            pages
+            widgets
+            state_management
+        data (data retrieval)
+            repository
+            data_sources
+            models
+        domain (no dependencies)
+            use_cases
+            entities
+            repository
