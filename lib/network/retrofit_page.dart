@@ -1,7 +1,9 @@
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter3_dart3/network/post.dart';
-import 'package:flutter3_dart3/network/rest_client.dart';
+import 'package:flutter3_dart3/network/entities/post.dart';
+import 'package:flutter3_dart3/network/retrofit_dio/dio_config.dart';
+import 'package:flutter3_dart3/network/retrofit_dio/retrofit_client.dart';
 import 'package:retrofit/retrofit.dart';
 
 class RetrofitPage extends StatefulWidget {
@@ -12,13 +14,13 @@ class RetrofitPage extends StatefulWidget {
 }
 
 class _RetrofitPageState extends State<RetrofitPage> {
-  final dio = Dio();
-  late RestClient client;
+  late RetrofitClient client;
 
   @override
   void initState() {
     super.initState();
-    client = RestClient(dio);
+    configure();
+    client = RetrofitClient(dio);
   }
 
   @override
@@ -26,7 +28,7 @@ class _RetrofitPageState extends State<RetrofitPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Retrofit + Dio'),
+        title: const Text('Networking'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -36,6 +38,7 @@ class _RetrofitPageState extends State<RetrofitPage> {
                 onPressed: () async {
                   final posts = await client.getPosts();
                   debugPrint(posts.first.toString());
+                  // getPosts();
                 },
                 child: const Text('Get Posts')
             ),
@@ -43,13 +46,16 @@ class _RetrofitPageState extends State<RetrofitPage> {
                 onPressed: () async {
                   final post = await client.getPost(5);
                   debugPrint(post.toString());
+                  // getPost();
                 },
                 child: const Text('Get Post')
             ),
             ElevatedButton(
                 onPressed: () async {
-                  final post = await client.createPost(Post(userId: 250, title: 'title', body: 'body ...'));
-                  debugPrint(post.toString());
+                  var post = Post(userId: 250, title: 'title (created)', body: 'body ...');
+                  final posted = await client.createPost(post);
+                  debugPrint(posted.toString());
+                  // createPost();
                 },
                 child: const Text('Create Post')
             ),
@@ -99,6 +105,29 @@ class _RetrofitPageState extends State<RetrofitPage> {
                   debugPrint(httpResponse.response.headers.toString());
                 },
                 child: const Text('Headers')
+            ),
+            ElevatedButton(
+                onPressed: () async {
+                  try {
+                    await client.error();
+                  } on DioException catch (e) {
+                    debugPrint(e.message);
+                    debugPrint(e.type.toString());
+                    debugPrint(e.response?.statusCode.toString());
+                    debugPrint(e.response?.statusMessage.toString());
+                  }
+                },
+                child: const Text('Error Post')
+            ),
+            ElevatedButton(
+                onPressed: () async {
+                  try {
+                    await client.errorWithHttpResponse();
+                  } on DioException catch (e) {
+                    debugPrint(e.message);
+                  }
+                },
+                child: const Text('Error HttpResponse')
             ),
           ],
         ),

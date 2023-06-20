@@ -31,13 +31,13 @@ class _NetworkCallsPageState extends State<NetworkCallsPage> {
                   final impl = PostRepositoryImpl(api);
                   final res = await impl.getPosts();
                   if (res is DataSuccess) {
-                    print('DATA SUCCESS');
+                    debugPrint('DATA SUCCESS');
                   }
                   if (res is DataError) {
-                    print('DATA ERROR');
+                    debugPrint('DATA ERROR');
                   }
                   if (res.data != null) {
-                    print('ID of first: ${res.data?.first.id}');
+                    debugPrint('ID of first: ${res.data?.first.id}');
                   }
                 },
                 child: const Text('Get Posts')

@@ -5,7 +5,7 @@ Flutter and Dart 3, clean architecture
 ## Getting Started
 
 flutter pub add <package>
-dart run build_runner build (flutter pub run build_runner build)
+dart run build_runner build --delete-conflicting-outputs (flutter pub run build_runner build)
 
 Clean Architecture
 

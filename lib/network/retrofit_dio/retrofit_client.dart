@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart' hide Headers;
-import 'package:flutter3_dart3/network/post.dart';
+import 'package:flutter3_dart3/network/entities/post.dart';
 import 'package:retrofit/retrofit.dart';
 
-part 'rest_client.g.dart';
+part 'retrofit_client.g.dart';
 
 @RestApi(baseUrl: 'https://jsonplaceholder.typicode.com/')
-abstract class RestClient {
-  factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
+abstract class RetrofitClient {
+  factory RetrofitClient(Dio dio, {String baseUrl}) = _RetrofitClient;
 
   @GET('posts')
   Future<List<Post>> getPosts();
@@ -32,4 +32,11 @@ abstract class RestClient {
   @GET('posts/{id}')
   @Headers(<String, dynamic>{'X-Custom': 'Header'})
   Future<HttpResponse<Post>> getPostWithHeader(@Path("id") int id);
+
+  @GET('does-not-exist')
+  Future<Post> error();
+
+  @GET('does-not-exist')
+  Future<HttpResponse<Post>> errorWithHttpResponse();
+
 }

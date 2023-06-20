@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter3_dart3/clean_arch/features/post/post_page.dart';
 import 'package:flutter3_dart3/network/retrofit_page.dart';
 
 void main() {
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Concepts'),
+      home: const RetrofitPage(), // MyHomePage(title: 'Flutter Concepts'),
     );
   }
 }
@@ -44,12 +43,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const NetworkCallsPage()));
-              },
-              child: const Text('Clean Architecture')
-            ),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     Navigator.of(context).push(MaterialPageRoute(builder: (context) => const NetworkCallsPage()));
+            //   },
+            //   child: const Text('Clean Architecture')
+            // ),
             ElevatedButton(
               child: const Text('Network Call'),
               onPressed: () {
