@@ -32,7 +32,7 @@ class _RetrofitPageState extends State<RetrofitPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
+        child: Wrap(
           children: <Widget>[
             ElevatedButton(
                 onPressed: () async {
@@ -128,6 +128,38 @@ class _RetrofitPageState extends State<RetrofitPage> {
                   }
                 },
                 child: const Text('Error HttpResponse')
+            ),
+            ElevatedButton(
+                onPressed: () async {
+                  try {
+                    final comment = await client.getComment();
+                    debugPrint(comment.toString());
+                  } on DioException catch (e) {
+                    debugPrint(e.message);
+                    debugPrint(e.type.toString());
+                    debugPrint(e.response?.statusCode.toString());
+                    debugPrint(e.response?.statusMessage.toString());
+                  }
+                },
+                child: const Text('Get Comment')
+            ),
+            ElevatedButton(
+                onPressed: () async {
+                  try {
+                    final user = await client.getUser();
+                    debugPrint(user.toString());
+                  } on DioException catch (e) {
+                    debugPrint(e.message);
+                    debugPrint(e.type.toString());
+                    debugPrint(e.response?.statusCode.toString());
+                    debugPrint(e.response?.statusMessage.toString());
+                  } on AssertionError catch (e) {
+                    debugPrint(e.message?.toString());
+                  } on Exception catch (e) {
+                    debugPrint(e.toString());
+                  }
+                },
+                child: const Text('Get User')
             ),
           ],
         ),

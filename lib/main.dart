@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               child: const Text('Network Call'),
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RetrofitPage()));
+                // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RetrofitPage()));
               },
             ),
           ],

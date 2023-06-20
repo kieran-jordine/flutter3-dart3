@@ -1,0 +1,11 @@
+targets:
+  $default:
+    builders:
+      freezed:
+        options:
+          maybe_when: false
+          maybe_map: false
+          union_value_case: none
+      json_serializable:
+        options:
+          explicit_to_json: true

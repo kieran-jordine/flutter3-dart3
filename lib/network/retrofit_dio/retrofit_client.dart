@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart' hide Headers;
+import 'package:flutter3_dart3/network/entities/comment.dart';
 import 'package:flutter3_dart3/network/entities/post.dart';
+import 'package:flutter3_dart3/network/entities/user.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'retrofit_client.g.dart';
@@ -38,5 +40,12 @@ abstract class RetrofitClient {
 
   @GET('does-not-exist')
   Future<HttpResponse<Post>> errorWithHttpResponse();
+
+  // comments - should be a different file??
+  @GET('comments/1')
+  Future<Comment> getComment();
+  
+  @GET('users/1')
+  Future<User> getUser();
 
 }
