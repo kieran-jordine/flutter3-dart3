@@ -1,5 +1,8 @@
 
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 
 final dio = Dio();
 
@@ -26,6 +29,16 @@ void configure() {
     }
   );
   dio.interceptors.add(interceptor);
+  dio.httpClientAdapter = IOHttpClientAdapter(
+    createHttpClient: () {
+      final client = HttpClient(context: SecurityContext(withTrustedRoots: false));
+      client.badCertificateCallback = (cert, host, port) => true;
+      return client;
+    },
+    validateCertificate: (cert, host, port) {
+      return cert != null;
+    }
+  );
 }
 
 
