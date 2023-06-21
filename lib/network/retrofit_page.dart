@@ -1,6 +1,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter3_dart3/network/core/network_state.dart';
 import 'package:flutter3_dart3/network/entities/post.dart';
 import 'package:flutter3_dart3/network/retrofit_dio/dio_config.dart';
 import 'package:flutter3_dart3/network/retrofit_dio/retrofit_client.dart';
@@ -160,10 +161,43 @@ class _RetrofitPageState extends State<RetrofitPage> {
                   }
                 },
                 child: const Text('Get User')
+            ),ElevatedButton(
+                onPressed: () async {
+                  try {
+                    NetworkState ns = Loaded(false);
+                    debugPrint(what(ns));
+                  } on Exception catch (e) {
+                    debugPrint(e.toString());
+                  }
+                },
+                child: const Text('Sealed')
+            ),
+            ElevatedButton(
+                onPressed: () async {
+                  try {
+                    // const res = ApiResponse<String>.data("generic string");
+                    // print(res);
+                  } on AssertionError catch (e) {
+                    debugPrint(e.message?.toString());
+                  } on Exception catch (e) {
+                    debugPrint(e.toString());
+                  }
+                },
+                child: const Text('Generic')
             ),
           ],
         ),
       ),
     );
+  }
+
+  String what(NetworkState networkState) {
+    return switch(networkState) {
+      Initial() => 'initial',
+      Loading() => 'loading',
+      Loaded() => 'loaded',
+      Success() => 'success',
+      Error() => 'error'
+    };
   }
 }

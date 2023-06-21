@@ -1,0 +1,22 @@
+config
+    theme
+    routes
+core
+    util
+    error
+    network
+    use_cases
+features
+    <feature-name>
+        presentation
+            pages
+            widgets
+            state_management
+        data (data retrieval)
+            repository
+            data_sources
+            models
+        domain (no dependencies)
+            use_cases
+            entities
+            repository
