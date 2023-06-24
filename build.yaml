@@ -10,3 +10,6 @@ targets:
         options:
           explicit_to_json: true
           generic_argument_factories: true
+      drift_dev:
+        options:
+          store_date_time_values_as_text: true
