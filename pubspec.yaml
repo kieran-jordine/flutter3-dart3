@@ -21,19 +21,22 @@ dependencies:
   drift: ^2.9.0
   floor: ^1.4.1
   hive: ^2.2.3
+  flutter_riverpod: ^2.3.6
+  riverpod_annotation: ^2.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
-  retrofit_generator: ^7.0.1
+  retrofit_generator: ^7.0.2
   build_runner: ^2.4.5
   json_serializable: ^6.7.0
   freezed: ^2.3.5
   drift_dev: ^2.9.0
   floor_generator: ^1.4.2
   hive_generator: ^2.0.0
+  riverpod_generator: ^2.2.3
 
 flutter:
   uses-material-design: true
