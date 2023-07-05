@@ -1,3 +1,18 @@
-model
-view
-view-model
+config
+    theme
+    routes
+core
+    util
+    error
+features
+    <feature-name>
+        view
+        view_model
+        model
+        repository
+
+// dependency injection
+class ViewModel extends ChangeNotifier {
+    final Repo repo;
+    ViewModel(this.repo);
+}
