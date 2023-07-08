@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter3_dart3/config/routes.dart';
 import 'package:flutter3_dart3/navigation/navigation.dart';
 
 void main() {
@@ -16,7 +17,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyNavigation(),  // const MyHomePage(title: 'Flutter Concepts'),
+
+      routes: namedRoutes,
+      // initialRoute: '/',
+      onGenerateRoute: generatedRoute,
+      home: const MyNavigation(), // const MyHomePage(title: 'Flutter Concepts'),
+
+      // onUnknownRoute: (settings) => MaterialPageRoute(builder: (context) => const UnknownRoute()),
     );
   }
 }

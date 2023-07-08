@@ -71,7 +71,7 @@ class Car12 extends Vehicle6 { }
 class Car13 extends Vehicle6 { }
 String what(Vehicle6 v6) {
   return switch(v6) {
-    Car11() => 'Car11',
+    Car11() || Car13() => 'Car11',
     Car12() => 'Car12',
     _ => 'Car13'
   };
