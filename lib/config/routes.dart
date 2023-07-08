@@ -16,7 +16,13 @@ Route<dynamic> generatedRoute(RouteSettings settings) {
       ),
     );
   }
-  return MaterialPageRoute(builder: (context) => const UnknownRoute());
+  return MaterialPageRoute(
+    builder: (context) => const UnknownRoute(),
+    allowSnapshotting: true,
+    fullscreenDialog: false,
+    maintainState: true,
+    settings: settings
+  );
 }
 
 class UnknownRoute extends StatelessWidget {
