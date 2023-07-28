@@ -27,7 +27,7 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     namespace "com.kyzen.flutter3_dart3"
-    compileSdkVersion localProperties.getProperty('flutter.compileSdkVersion').toInteger()
+    compileSdk localProperties.getProperty('flutter.compileSdkVersion').toInteger()
 //    ndkVersion flutter.ndkVersion
 
     compileOptions {
